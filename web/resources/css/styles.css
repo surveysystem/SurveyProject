@@ -1,0 +1,75 @@
+#heading {
+    padding: 20px;
+    height: 150px;
+    margin-bottom: 10px;
+    background: #dddddd;
+    border: 1px solid darkGray;
+}
+
+#sidebarLeft {
+    
+    padding: 5px;
+    width: 200px;
+    background: #eeeeee;
+}
+
+#content {
+    
+    padding: 5px;
+    
+    float: right;
+
+    position: absolute;
+    right: 8px;
+    left: 230px;
+    height: 400px;
+    top: 210px;
+
+}
+
+.header {
+    font-size: 1.7em;
+    font-style: italic;
+    font-family: Palatino;
+    text-align: center;
+    font-weight: 900;
+}
+
+.unselected {
+    padding: 5px;
+    text-align: center;
+    
+}
+
+.selected {
+    padding: 5px;
+    text-align: center;
+    background: white;
+    
+}
+
+.welcome {
+    font-style: italic;
+    font-family: Palatino;
+}
+
+.welcomeImage {
+    margin-top: 10px;
+    text-align: center;
+}
+img{
+    width:130px;
+    alignment-baseline: central;
+}
+.catTea{
+    padding: 6px;
+    width: 100px;
+    height: 200px;
+}
+.horzBar{
+    float: right;
+
+}
+.errorMsg{
+    color: red;
+}

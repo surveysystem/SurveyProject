@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Questions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition template="template/master.xhtml">
+            <ui:define name="windowTitle"> 
+                "Questions"
+            </ui:define>
+            <ui:define name="content">
+                <h:form>
+                    <p:commandButton value="Add Question" action="AddQuestions"/>
+                    <br/>
+                    <br/>
+                    <p:dataTable value="#{questionsBean.questions}" var="question">
+                        <p:column width="60" >
+                            <f:facet name="header">IsActive</f:facet>
+                            <p:selectBooleanCheckbox  value="#{question.isActive}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Code</f:facet>
+                            <p:outputLabel value="#{question.questionCode}" id="code"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Question</f:facet>
+                            <p:outputLabel value="#{question.questionDesc}"  id="questionDesc" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Question Type</f:facet>
+                            <p:outputLabel value="#{question.questionType}"  id="questionType" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Select</f:facet>
+                            <p:commandButton value="Select" action="#{questionsBean.editQuestion()}"  style="center">
+                                <f:setPropertyActionListener target="#{addQuestion.question}" value="#{question}" />
+
+                            </p:commandButton>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Delete</f:facet>
+                            <p:commandButton value="Delete" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

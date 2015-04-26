@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title><ui:insert name="windowTitle"/> </title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <f:view>
+        <f:event type="preRenderView" listener="#{login.checkLogin(event)}"/>
+    <h:body>
+        <div id="heading">
+            <ui:insert name="heading">
+                <ui:include src="/sections/Main/header.xhtml" />
+                <h:form>
+                    <p:commandLink action="#{login.logout()}" value="Logout" style="float: right;"/>
+                </h:form>
+            </ui:insert>           
+        </div>
+        <div id="sidebarLeft">
+            <ui:insert name="sidebarLeft">
+                <ui:include src="/sections/Main/leftBar.xhtml"/>
+            </ui:insert>
+        </div>
+        <div id="content">
+            <ui:insert name="content"/>
+        </div>
+        <ui:debug/>
+    </h:body>
+  </f:view>
+</html>

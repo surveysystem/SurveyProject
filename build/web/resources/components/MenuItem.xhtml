@@ -1,0 +1,25 @@
+<html xmlns='http://www.w3.org/1999/xhtml'  
+    xmlns:p="http://primefaces.org/ui" 
+       xmlns:composite="http://xmlns.jcp.org/jsf/composite" 
+       xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+
+    <composite:interface>
+        <composite:attribute name="name" />
+        <composite:attribute name="numId" />
+        <composite:attribute name="actionMethod" method-signature="java.lang.String action()"/>
+        <composite:attribute name="image"  />
+    </composite:interface>
+
+    <composite:implementation>
+        <h:outputStylesheet library="css" name="styles.css"/> 
+        <div class="#{main.getStyleClass(cc.attrs.numId)}">
+            
+            <p:commandLink action="#{cc.attrs.actionMethod}" >
+                <p:graphicImage value="#{cc.attrs.image}" />
+                <br/>
+                <p:outputLabel value="#{cc.attrs.name}"/>
+            </p:commandLink>
+        </div>
+    </composite:implementation>
+</html>

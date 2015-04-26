@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:composition template="template/master.xhtml">
+        <ui:define name="windowTitle">
+            #{msgs.loginTitle}
+        </ui:define>
+
+        <ui:define name="heading">
+            <ui:include src="/sections/Login/header.xhtml"/>
+        </ui:define>
+
+        <ui:define name="sidebarLeft">
+            <ui:include src="/sections/Login/leftBar.xhtml"/>
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form>
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <p:separator/>
+                <h:panelGrid columns="3" cellpadding="5" id="grid" >
+                    <p:outputLabel for="username" value="Username: " />
+                    <p:inputText id="username" value="#{login.username}"/>
+                    <p:message for="username"/>
+                    <p:outputLabel for="password" value="Password: " />
+                    <p:password id="password" value="#{login.password}"/>
+                    <p:message for="password"/>
+                </h:panelGrid>  
+                <p:separator/>
+                <p:commandButton id="loginButton" action="#{login.doLogin}" value="Login"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+

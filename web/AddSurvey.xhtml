@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Add A new Survey</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition template="template/master.xhtml">
+            <ui:define name="windowTitle">
+                Add a new Survey
+            </ui:define>
+            <ui:define name="content">
+                <h:form>
+
+                    <p:panelGrid columns="2">
+                        Survey Description : <p:inputTextarea rows="4" cols="80" value="#{addSurvey.survey.surveyDesc}"/>              
+                        Survey Date : <p:calendar id="mask" value="#{addSurvey.survey.surveyDate}" pattern="MM-dd-yyyy" mask="true" />
+                        Remarks : <p:inputTextarea value="#{addSurvey.survey.remarks}" rows="4" cols="80"/>
+                    </p:panelGrid>
+                    <br/>
+                    <p:commandButton action="#{addSurvey.addSurvey()}" value="Add"/> 
+                    <p:commandButton action="ViewSurveys" value="Cancel" immediate="true"/>
+                    <br/>
+                    <br/>
+                    <p:dataTable  value="#{addSurvey.questions}" var="q">
+                        <p:column>
+                            <f:facet name="header">Choose Question</f:facet>
+                            <p:selectBooleanCheckbox>
+                                <p:ajax listener="#{addSurvey.toggleSelected(q)}"/>
+                            </p:selectBooleanCheckbox>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Code</f:facet>
+                            <p:outputLabel value="#{q.questionCode}" id="code"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Question</f:facet>
+                            <p:outputLabel value="#{q.questionDesc}" id="description" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Question Type</f:facet>
+                            <p:outputLabel value="#{q.questionType==1?'Multiple Choice':'Text Answer'}"  id="type" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

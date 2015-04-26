@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition template="template/master.xhtml">
+            <ui:define name="windowTitle"> 
+                "Add Questions"
+            </ui:define>
+            <ui:define name="content">
+                <h:form>
+                    <p:panelGrid columns="2">
+                        Is active : <p:selectBooleanCheckbox value="#{addQuestion.question.isActive}"/>
+                        Question Code : <p:inputText value="#{addQuestion.question.questionCode}" required="true" id="userCode" label="Name Is required"/>              
+                        Question ? : <p:inputTextarea rows="4" cols="80" value="#{addQuestion.question.questionDesc}"/>
+                        Question Type : <p:selectOneListbox value="#{addQuestion.question.questionType}">
+                            <f:selectItem itemValue="1" itemLabel="Multiple Choice" />
+                            <f:selectItem itemValue="2" itemLabel="Text" />
+                        </p:selectOneListbox>
+
+                    </p:panelGrid>
+                    <br/>
+                    <p:commandButton action="#{addQuestion.addQuestion()}" value="Add" />
+                    <p:commandButton action="index" value="Cancel" immediate="true"/>
+                    
+                    <br/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

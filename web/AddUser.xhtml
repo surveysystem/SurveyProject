@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </head>
+    <body>
+
+        <ui:composition template="template/master.xhtml">
+            <ui:define name="windowTitle">
+                "Registration"
+            </ui:define>
+            <ui:define name="content">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <h:form>
+                    <p:panelGrid columns="2">
+                        Email : <p:inputText value="#{registration.user.email}" required="true" label="email"/>
+                        UserName : <p:inputText value="#{registration.user.userName}" required="true" label="userName"/>
+                        <p:outputLabel for="pwd1" value="Password: " /> <p:password id="pwd1" value="#{registration.user.password}" feedback="false" match="pwd2" label="Password" required="true"/>
+                        <p:outputLabel for="pwd2" value="Confirm Password: " /><p:password id="pwd2" value="#{registration.user.password}" feedback="false" label="Confirm Password" required="true"/>
+                        First Name : <p:inputText value="#{registration.user.firstName}" required="true" id="firstname" label="First Name"/>
+                        Last Name : <p:inputText value="#{registration.user.lastName}" required="true" id="lastName" label="Last Name"/>
+                        Zip Code : <p:inputMask value="#{registration.user.userCode}" required="true" id="zipCode" label="Zipcode" mask="99999"/>              
+                        Phone : <p:inputMask value="#{registration.user.phone}" required="true" label="Phone" mask="(999) 999-9999"/>
+                        Is active : <p:selectBooleanCheckbox value="#{registration.user.isActive}"/>
+
+
+                    </p:panelGrid>
+                    <br/>
+
+                    <p:commandButton action="#{registration.doRegistration()}" value="Save"/> 
+                    <p:commandButton action="index" value="Cancel" immediate="true"/>
+
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+
+
+    </body>
+</html>

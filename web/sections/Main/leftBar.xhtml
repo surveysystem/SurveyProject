@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:corejsf="http://xmlns.jcp.org/jsf/composite/components" >
+    
+    <ui:composition>    
+        <h:form>
+            <corejsf:MenuItem name="Users" image="#{resource['Images:u1.png']}"  actionMethod="#{main.getNavigation(1)}" numId="1" />
+            <corejsf:MenuItem name="Questions" image="#{resource['Images:q3.png']}"  actionMethod="#{main.getNavigation(2)}" numId="2" />
+            <corejsf:MenuItem name="Surveys" image="#{resource['Images:survey.png']}"  actionMethod="#{main.getNavigation(3)}" numId="3" />
+
+        </h:form>	    
+    </ui:composition>
+
+</html>
